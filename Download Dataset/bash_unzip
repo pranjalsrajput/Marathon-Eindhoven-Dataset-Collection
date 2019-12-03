@@ -1,0 +1,13 @@
+#!/bin/bash
+#To escape spaces in the directory names
+IFS='
+' # split on newline only
+set -o noglob # disable globbing
+FOLDER='/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset'
+for X in $(find "$FOLDER" -type f -iname '*.zip')															#Look for all the files with extension .zip
+do 
+echo "$X"
+unzip "$X"
+done
+
+
