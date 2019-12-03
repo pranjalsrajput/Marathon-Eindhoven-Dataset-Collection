@@ -3,11 +3,11 @@
 IFS='
 ' # split on newline only
 set -o noglob # disable globbing
-FOLDER='/var/www/html/uploads-ruud/uploads'
-
+FOLDER='/var/www/html/uploads-ruud/uploads' #Location of the data
+destination="/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset" #Location where the data would be downloaded
 while read p; do
   echo "$p"
-  scp psinghrajput@145.94.127.185:$p "/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset"
+  scp psinghrajput@145.94.127.185:$p $destination
 done <listOfZip.txt
 
 
