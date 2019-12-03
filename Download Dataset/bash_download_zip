@@ -1,0 +1,17 @@
+#!/bin/bash
+#To escape spaces in the directory names
+IFS='
+' # split on newline only
+set -o noglob # disable globbing
+FOLDER='/var/www/html/uploads-ruud/uploads'
+#username=$1
+#destination=$2
+#echo "Hello"
+for X in $(find "$FOLDER" -type f -iname '*.zip')															#Look for all the files with extension .zip
+do 
+#scp $username@145.94.127.185:$X $destination
+echo $X
+#scp psinghrajput@145.94.127.185:$X /home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset
+done
+
+

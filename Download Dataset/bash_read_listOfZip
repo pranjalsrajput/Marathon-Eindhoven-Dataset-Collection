@@ -1,0 +1,13 @@
+#!/bin/bash
+#To escape spaces in the directory names
+IFS='
+' # split on newline only
+set -o noglob # disable globbing
+FOLDER='/var/www/html/uploads-ruud/uploads'
+
+while read p; do
+  echo "$p"
+  scp psinghrajput@145.94.127.185:$p "/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset"
+done <listOfZip.txt
+
+
