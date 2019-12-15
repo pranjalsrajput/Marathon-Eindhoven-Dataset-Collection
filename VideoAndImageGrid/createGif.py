@@ -4,18 +4,21 @@ import imageio
 import numpy as np
 import glob
 import os
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+
+def trimVideo(input_video, start_time, end_time):
+    ffmpeg_extract_subclip(input_video, start_time, end_time, targetname=input_video.split(".")[0]+"_trimmed.mp4")
 
 #-----------------Start: Code to extract the video frames------------------------------#
-def extractVideoFrames():
-    cap = cv2.VideoCapture(
-        '/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/VID_20191013_120109.mp4')
+def extractVideoFrames(input_video):
+    cap = cv2.VideoCapture(input_video)
     i = 0
     while (cap.isOpened()):
+        #cap.set(cv2.CAP_PROP_POS_MSEC, (i * 1000))
         ret, frame = cap.read()
         if ret == False:
             break
-        cv2.imwrite(
-            '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/frames/VID_20191013_120109_' + str(
+        cv2.imwrite(input_video.split(".")[0]+'_' + str(
                 i) + '.jpg', frame)
         i += 1
 
@@ -24,17 +27,42 @@ def extractVideoFrames():
 #-----------------End: Code to extract the video frames------------------------------#
 
 #-----------------Start: Code to create the GIFs from frames------------------------------#
-def createGIF():
+def createGIF(path_to_frames):
     filenames = [
-        '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/frames/VID_20191013_120109_0.jpg',
-        '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/frames/VID_20191013_120109_100.jpg',
-        '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/frames/VID_20191013_120109_120.jpg',
-        '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/frames/VID_20191013_120109_127.jpg']
+        path_to_frames+'VID_20191013_110221359_trimmed_0.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_1.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_2.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_3.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_4.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_5.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_6.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_7.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_8.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_9.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_10.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_11.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_12.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_13.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_14.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_15.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_16.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_17.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_18.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_19.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_20.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_21.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_22.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_23.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_24.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_25.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_26.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_27.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_28.jpg',
+        path_to_frames+'VID_20191013_110221359_trimmed_29.jpg',]
 
-    with imageio.get_writer(
-            '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/GIFs/movie1.gif',
-            mode='I', duration=0.5) as writer:
+    with imageio.get_writer(path_to_frames+'_GIF2.gif', mode='I') as writer:
         for filename in filenames:
+        # for filename in glob.glob(os.path.join(path_to_frames, '*.jpg')):
             image = imageio.imread(filename)
             writer.append_data(image)
 # -----------------End: Code to create the GIFs from frames------------------------------#
@@ -81,5 +109,10 @@ def mergeGIFs(mergeType,path):
 
 
 if __name__=="__main__":
-    # mergeGIFs('H','/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/GIFs/')
-    mergeGIFs('V','/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/HorizontalGIFs/')
+    print("Start")
+    # mergeGIFs('H','/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/GIFs/')                 #Merge GIFs horizontally
+    #mergeGIFs('V','/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/HorizontalGIFs/')        #Merge Horizontally merged GIFs vertically
+    #extractVideoFrames('/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/35/VID_20191013_135859615_trimmed.mp4')                                                                                                                   #Extract frames from a video
+    createGIF('/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/35/Frames/')
+    #trimVideo('/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/35/VID_20191013_135859615.mp4',60,62) #Trim an input video, giving start and end time(in sec)
+    print("Done")
