@@ -1,0 +1,6 @@
+path=/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/36/
+/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/36/VID_1_10-22am_24to27sec.mp4,24,27
+/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/36/VID_4_10-41am_4to6sec.mp4,4,6
+/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/36/VID_5_10-41am_1to4sec.mp4,1,4
+/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/Videos For Sample/36/VID_20191013_14-59pm_58secto1min.mp4,58,60
+
