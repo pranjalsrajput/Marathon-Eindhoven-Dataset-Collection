@@ -52,34 +52,7 @@ def extractVideoFrames(input_video):
 
 #-----------------Start: Code to create the GIFs from frames------------------------------#
 def createGIF(path_to_frames):
-    # files = [
-    #     path_to_frames+'VID_20191013_110221359_trimmed_3.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_4.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_5.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_6.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_7.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_8.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_9.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_10.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_11.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_12.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_13.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_14.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_15.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_16.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_17.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_18.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_19.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_20.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_21.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_22.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_23.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_24.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_25.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_26.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_27.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_28.jpg',
-    #     path_to_frames+'VID_20191013_110221359_trimmed_29.jpg',]
+
     files=[]
     for filename in glob.glob(os.path.join(path_to_frames, '*.jpg')):
         #print(filename)
@@ -117,10 +90,6 @@ def mergeGIFs(mergeType,path):
     if (mergeType == 'V'):
         gifPath='/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/VerticalGIFs/output.gif'
         output_gif = imageio.get_writer(gifPath, mode='I', duration=(1/30))
-
-    # output_gif = imageio.get_writer('/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/HorizontalGIFs/output4.gif')
-    # output_gif = imageio.get_writer(
-    #     '/home/pranjal/Documents/PythonProjects/Marathon-Eindhoven-Dataset-Collection/VideoAndImageGrid/VerticalGIFs/output4.gif')
 
     for frame_number in range(number_of_frames):
         gifFrameList=[]
