@@ -1,7 +1,11 @@
 # Marathon-Eindhoven-Dataset-Collection
 To collect a Video dataset of marathon runners which can be useful for the researchers and people working in computer vision
 
-## Webscarping
+## Extracting the Video Metadata
+
+Dowmload all the dataset from a remote server and extract the metadata of the collected videos.
+
+## Webscraping
  
 * Data is collected from the offical website of the marathon event.
 * Use `SeleniumWebdriver.py` to extract the data.
