@@ -1,5 +1,11 @@
 # Creating a Grid of GIFs
 
+Few things need to take care of:
+
+1. All the GIFs to be merged should be of same durations (containing the same number of frames)
+
+2. For example, to create a GIF of 10sec duration, you should extract total 300 frames from the videos (if 2 videos, then extract 150 frames from each video). I have considered a frame rate of 30fps while creating the GIF. This value can be edited in the code.
+
 ## Ways to create a GIF
 
 There are two ways to do this:
