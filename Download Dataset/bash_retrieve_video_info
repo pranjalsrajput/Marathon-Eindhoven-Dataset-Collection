@@ -1,0 +1,17 @@
+#!/bin/bash
+#To escape spaces in the directory names
+IFS='
+' # split on newline only
+set -o noglob # disable globbing
+FOLDER='/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/'
+for X in $(find . -type f -exec file -N -i -- {} + | sed -n 's!: video/[^:]*$!!p')															#Look for all the video files
+do 
+echo "$X" >> listOfVideos.txt
+#exiftool "$X" | grep -E 'File Name|File Size|File Type|Duration|Video Frame Rate|Image Size|Creation Date' | uniq &>> SomeFile.xls 
+done
+
+python3 VideoMetadata.py
+python3 ChartAndStats.py
+
+
+

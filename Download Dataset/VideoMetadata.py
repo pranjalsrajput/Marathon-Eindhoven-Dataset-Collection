@@ -13,13 +13,12 @@ for i in range(len(columnNames)):
     worksheet.write(row, col+i, columnNames[i])
 
 #dataLocation=str(sys.argv[1])
-mypath="/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/"
-dataLocation="/home/pranjal/Documents/Assignments/Deep Learning Project/"
+mypath="./"
+#dataLocation="/home/pranjal/Documents/Assignments/Deep Learning Project/"
 textfilename="listOfVideos.txt"
 with open(mypath+textfilename) as f:
   for line in f:
-      # videopath="/home/pranjal/Documents/Assignments/Deep Learning Project/NewDataset/_SameerFulari_27/IMG_0877.MOV"
-      videopath = dataLocation+line
+      videopath = line
       print(videopath)
       files = [videopath]
       row += 1
@@ -28,9 +27,8 @@ with open(mypath+textfilename) as f:
           metadata = et.get_metadata_batch(files)
       for data in metadata:
           #print("data: ", data)
-          # print("{:20.20} {:20.20}".format(d["File:FileName"],d["File:FileSize"],d["File:FileType"],d["File:FileSize"],d["File:FileSize"]))
           if "File:FileName" in data:
-              worksheet.write(row, col, str(videopath))
+              worksheet.write(row, col, videopath)
           if "File:FileSize" in data:
               worksheet.write(row, col + 1, data["File:FileSize"]/(1024*1024))
           if "File:FileType" in data:
