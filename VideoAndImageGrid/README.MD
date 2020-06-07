@@ -1,6 +1,6 @@
 # Creating a Grid of GIFs
 
-Few things need to take care of:
+Few things need to taken care of:
 
 1. All the GIFs to be merged should be of same durations (containing the same number of frames)
 
